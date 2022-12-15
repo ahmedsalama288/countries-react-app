@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 const iso = require("iso-3166-1");
 
-const Country = () => {
+const Country = (props) => {
   // [#] Get The Country Name From The URL
   const { countryName } = useParams();
 
@@ -58,7 +58,7 @@ const Country = () => {
   }
 
   return (
-    <section className="country-compo">
+    <section className={`country-compo ${props.darkMode ? "dark-mode": ""}`}>
       {display && (
         <>
           <div className="go-back">

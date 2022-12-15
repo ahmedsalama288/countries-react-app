@@ -23,7 +23,8 @@ function Search(props) {
     // [#] Change The State Region property
     displayOptions();
     const region = event.target.innerHTML;
-    props.setCountryData((prevObj) => ({ ...prevObj, region: region }));
+    // [!] Set The Value Of Country Name: "" to Avoid any Get Request To This Country
+    props.setCountryData(() => ({ name: "", region: region }));
   }
 
   return (
@@ -45,6 +46,7 @@ function Search(props) {
 
         {displayUl && (
           <ul onClick={ulClicked}>
+            <li>All</li>
             <li>Africa</li>
             <li>America</li>
             <li>Asia</li>

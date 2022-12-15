@@ -105,6 +105,7 @@ main {
     gap: 50px;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     margin-top: 50px;
+    margin-bottom: 100px;
     > .grid-item {
       & {
         display: flex;
@@ -165,7 +166,6 @@ header {
     background-color: white;
     box-shadow: 0px 4px 10px 1px hsl(0, 0%, 90%);
   }
-  // Dark Mode
   .header-contaner {
     & {
       display: flex;
@@ -189,14 +189,16 @@ header {
         cursor: pointer;
       }
       .icon {
-        padding: 3px 0px 0px;
-        margin-right: 10px;
+        width: 24px;
+        padding: 0px 0px 0px;
+        margin-right: 6px;
+        display: flex;
         i {
           font-size: 18px;
           transform: rotate(-26deg);
         }
       }
-      h3 {
+      > span:not(.icon) {
         font-size: 16px;
         font-weight: 600;
         letter-spacing: -0.6px;
@@ -209,7 +211,7 @@ header {
 .country-compo {
   & {
     display: flex;
-    padding: 20px 74px;
+    padding: 20px 74px 100px;
     flex-direction: column;
     width: 100%;
     max-width: 1400px;
@@ -298,6 +300,99 @@ header {
     }
   }
 }
+
+.error {
+  margin-top: 30px;
+  h2 {
+    padding-left: 15px;
+    color: $mainTextColor;
+  }
+}
+
+// [!] Start Dark Mode
+$darkModeElementsColor: hsl(209, 23%, 22%);
+header.dark-mode {
+  box-shadow: none;
+  background-color: $darkModeElementsColor;
+  .header-contaner {
+    h1 {
+      color: white;
+    }
+    > .dark-mode {
+      color: white;
+    }
+  }
+}
+main.dark-mode {
+  .search {
+    .country {
+      color: white;
+      background-color: $darkModeElementsColor;
+      input::placeholder {
+        color: white;
+      }
+    }
+    .region {
+      .filter {
+        color: white;
+        background-color: $darkModeElementsColor;
+        + ul {
+          background-color: $darkModeElementsColor;
+          li {
+            color: white;
+          }
+        }
+      }
+
+    }
+  }
+  .countrys-grid {
+    .grid-item {
+      color: white;
+      background-color: $darkModeElementsColor;
+      ul {
+        li {
+          color: white;
+        }
+      }
+    }
+  }
+  .error {
+    h2 {
+      color: white;
+    }
+  }
+}
+.country-compo.dark-mode {
+  .go-back {
+    .back-btn {
+      
+      color: white;
+      background-color: $darkModeElementsColor;
+      box-shadow: 0px 0px 10px 6px rgb(27 37 47);
+    }
+  }
+  .country-info {
+    .info {
+      color: white;
+      ul {
+        li {
+          color: white;
+        }
+      }
+      .border-container {
+        .border-contry {
+          background-color: $darkModeElementsColor;
+          color: white;
+          border-color: rgb(27 37 47);
+        }
+      }
+    }
+  }
+}
+
+
+// [<!>] End Dark Mode
 
 // [#] Media query
 @media (max-width: 1300px) {

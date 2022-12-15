@@ -2,12 +2,10 @@ import React from "react";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
 
-const App = () => {
-  // [#] Create Dark Mode State
-  const [darkMode, setDarkMode] = React.useState(false);
+const App = (props) => {
   return (
     <>
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Header darkMode={props.darkMode} setDarkMode={props.setDarkMode} />
       <Outlet />
     </>
   );
