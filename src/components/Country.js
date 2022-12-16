@@ -14,9 +14,20 @@ const Country = (props) => {
   React.useEffect(() => {
     // [#] Make Get Request To Get The Information About The Country
     async function getCountryInfo() {
-      const res = await axios.get(
-        `https://restcountries.com/v3.1/name/${countryName}`
-      );
+      let res = {};
+      if (countryName.includes("(")) {
+        // [#] Get The String after "(" Char 
+        // [#] To Avoid The Request Error In ["Venezuela (Bolivarian Republic of)"]
+        let charindex = countryName.indexOf("(");
+        let countryNameModified = countryName.substring(0, charindex);
+        res = await axios.get(
+          `https://restcountries.com/v3.1/name/${countryNameModified}`
+        );
+      } else {
+        res = await axios.get(
+          `https://restcountries.com/v3.1/name/${countryName}`
+        );
+      }
       // [#] Save The Data In The ContryInfo State
       setContryInfo(() => res.data[0]);
     }
@@ -58,7 +69,7 @@ const Country = (props) => {
   }
 
   return (
-    <section className={`country-compo ${props.darkMode ? "dark-mode": ""}`}>
+    <section className={`country-compo ${props.darkMode ? "dark-mode" : ""}`}>
       {display && (
         <>
           <div className="go-back">
